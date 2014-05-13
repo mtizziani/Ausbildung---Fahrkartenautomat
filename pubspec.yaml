@@ -1,0 +1,13 @@
+name: Fahrkartenautomat
+version: 0.0.1
+author: Maik Tizziani - orchit GmbH
+homepage: http://orchit.de
+description: Entwurf eines Fahrkarten Automates für fiktive Verkehrsunternehmen
+dependencies:
+  browser: any
+  angular: any
+  intl: any
+  shadow_dom: any
+  cookie: any
+transformers:
+- angular

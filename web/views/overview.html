@@ -1,0 +1,71 @@
+<section class="container-fluid">
+    <h3 class="text-center">{{cmp.title}}</h3>
+    <div>
+        <div class="row">
+            <h4>Kasse</h4>
+        </div>
+        <div class="row" ng-if="cmp.ctrl.selectedPriceGroup != null">
+            <div class="col-lg-6">Preissturfe {{cmp.ctrl.selectedPriceGroup.name}}</div>
+            <div class="col-lg-2">Preis:</div>
+            <div class="col-lg-4 text-right">{{cmp.ctrl.selectedPriceGroup.price|currencyFormat_DE}} EUR</div>
+        </div>
+        <div class="row" ng-repeat="option in cmp.ctrl.selectedOptions">
+            <div class="col-lg-6">+ {{option.name}}</div>
+            <div class="col-lg-2">Preis:</div>
+            <div class="col-lg-4 text-right">{{option.calcOptionPrice(cmp.ctrl.selectedPriceGroup.price)|currencyFormat_DE}} EUR</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-lg-6">Gesamtbetrag</div>
+            <div class="col-lg-6 text-right" ng-if="cmp.ctrl.selectedPriceGroup.price">{{cmp.calculatedPrice|currencyFormat_DE}} EUR</div>
+            <div class="col-lg-6 text-right" ng-if="!cmp.ctrl.selectedPriceGroup.price">{{0|currencyFormat_DE}} EUR</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">Geldeinwurf</div>
+            <div class="col-lg-6 text-right">{{cmp.moneyInput|currencyFormat_DE}} EUR</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">Restbetrag</div>
+            <div class="col-lg-6 text-right">{{cmp.moneyOutput|currencyFormat_DE}} EUR</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 btn btn-default">Zahlung durchführen</div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 btn btn-default" ng-click="cmp.cancelPayment()">Vorgang abbrechen</div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+
+    <div>
+        <div class="row">
+            <h4>Geldbörse</h4>
+        </div>
+        <div class="row small">
+            (klick auf eine Grafik für Einwurf)
+        </div>
+        <div class="row">
+            <div class="col-lg-3" ng-repeat="money in cmp.paperMoney">
+                <img class=cashMoney" style="width:95%" src="sources/images/{{money.image}}" ng-click="cmp.inputMyMoney(money)"/>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-lg-2" ng-repeat="money in cmp.metalMoney">
+                <img style="width: 95%" src="sources/images/{{money.image}}" ng-click="cmp.inputMyMoney(money)"/>
+            </div>
+        </div>
+    </div>
+    <div ng-if="cmp.ctrl.selectedPriceGroup != null && cmp.moneyOutput > 0">
+        <div class="row" >
+            <h4>Rückgabe</h4>
+        </div>
+        <!-- FIXME: view of rest money doesnt work -->
+        <div class="row" ng-repeat="tmp in cmp.backMoney">
+            <div class="col-lg-3">{{tmp.counter}} X</div>
+            <div class="col-lg-6"><img style="width: 95%;" src="sources/images/{{tmp.image}}" /></div>
+        </div>
+    </div>
+</section>

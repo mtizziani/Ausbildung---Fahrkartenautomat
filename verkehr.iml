@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/packages/Fahrkartenautomat" />
+      <excludeFolder url="file://$MODULE_DIR$/web/css/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/less/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/sources/bootstrap/css/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/sources/bootstrap/fonts/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/sources/bootstrap/js/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/sources/bootstrap/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/sources/images/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/sources/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/views/packages" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="application" />
+  </component>
+</module>
+

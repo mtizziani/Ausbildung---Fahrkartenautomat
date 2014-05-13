@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app driver-card>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Fahrkartenautomat Frontend</title>
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />-->
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />-->
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-lg-12 text-center">Fahrkartenautomat Frontend</h1>
+        </div>
+        <section class="row" id="frontend">
+            <div class="col-lg-2 container-border">
+                <h3 class="text-center">Menü</h3>
+                <div class="row">
+                    <cmp-menu>test</cmp-menu>
+                </div>
+            </div>
+            <div class="col-lg-6 container-border">
+                <cmp-contentbox></cmp-contentbox>
+            </div>
+            <div class="col-lg-4 container-border">
+                <cmp-overview></cmp-overview>
+            </div>
+        </section>
+    </div>
+</body>
+<script type="application/dart" src="main.dart" ></script>
+<script type="text/javascript" src="packages/browser/dart.js"></script>
+</html>

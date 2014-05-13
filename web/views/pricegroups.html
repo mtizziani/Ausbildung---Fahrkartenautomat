@@ -1,0 +1,15 @@
+<section class="container-fluid">
+    <div class="row">
+        <div ng-repeat="pg in cmp.priceGroups" class="col-lg-6 btn btn-default" ng-click="cmp.ctrl.selectedPriceGroup = pg">
+            <div>Preisstufe: {{pg.name}}</div>
+            <div>Preis: {{pg.price|currencyFormat_DE}} Euro</div>
+        </div>
+    </div>
+    <div class="row margin-top-2" ng-if="cmp.ctrl.selectedPriceGroup != null">
+        <div class="col-lg-12 text-center">Zusatzoptionen</div>
+        <div class="col-lg-6 btn btn-default" ng-repeat="op in cmp.cardOptions" ng-click="cmp.ctrl.selectedOptions = op">
+            <div>{{op.name}}</div>
+            <div>Preis: {{op.calcOptionPrice(cmp.ctrl.selectedPriceGroup.price)|currencyFormat_DE}}</div>
+        </div>
+    </div>
+</section>
