@@ -1,59 +1,69 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: mtizziani
- * Date: 15.05.14
- * Time: 08:05
- */
 
-class Config{
-    public $user = 'root';
-    public $host = 'localhost';
-    public $password = 'orchit';
-    public $db = 'verkehr';
+/** config file for mysql */
+class SqlConfig{
+    public static $user = 'root';
+    public static $pass = 'orchit';
+    public static $host = 'localhost';
+    public static $db = 'verkehr';
 }
 
-
-class Server
-{
-    private $config;
-    public function __construct($config){
-        $this->config = $config;
-    }
-    private function executeQuery($queryString)
-    {
-        if ($queryString) {
-            $link = new mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db, null, null);
-            if ($link->error) {
-                http_response_code(409);
-                error_log("SQL-Error: ". $link->errno .' - '. $link->error);
-                die($link->errno . ': ' . $link->error);
-            }
-            $link->set_charset('utf8');
-            $resultHash = $link->query($queryString);
-            if ($link->error) {
-                http_response_code(409);
-                error_log("SQL-Error: ". $link->errno .' - '. $link->error);
-                die($link->errno . ': ' . $link->error);
-            }
-            if (gettype($resultHash) !== 'boolean') {
-                $resultList = array();
-                while ($singleResult = $resultHash->fetch_object()) {
-                    $resultList[] = $singleResult;
-                }
-                return $resultList;
-            }
-            $link->close();
-            return $resultHash;
+function execute($query){
+    if(count($query) > 0) {
+        $connection = new mysqli(SqlConfig::$host, SqlConfig::$user, SqlConfig::$pass, SqlConfig::$db);
+        if ($connection->connect_errno) {
+            http_response_code(409);
+            error_log('SQL Error: ' . $connection->connect_error);
+            die();
         }
+        $connection->set_charset('utf8');
+        $resultHash = $connection->query($query);
+        if ($connection->errno) {
+            http_response_code(409);
+            error_log('SQL Error: ' . $connection->error);
+            die();
+        }
+        if (gettype($resultHash) !== 'boolean') {
+            $resultList = array();
+            while ($singleResult = $resultHash->fetch_object()) {
+                $resultList[] = $singleResult;
+            }
+            return $resultList;
+        }
+        return $connection->insert_id;
     }
-
-
-    private function saveDriverCardToDatabase($priceGroupId){
-        $query = 'insert into payedCards (`pricegroupId`) values ('.$priceGroupId.')';
-        return $this->executeQuery($query);
-    }
+    return null;
+}
+function getPricegroups(){
+    $query = 'select * from pricegroup';
+    $result = execute($query);
+}
+function getOptions(){
+    $query = 'select * from option';
+    $result = execute($query);
+}
+function getMoney(){
+    $query = 'select * from money';
+    $result = execute($query);
+}
+function getPayments(){
+    $query = 'select * from payments';
+    $result = execute($query);
+}
+function checkUser($userName, $userPassword){
+    $query = "select id from user where name = $userName and pass = $userPassword";
+    $result = execute($query);
+}
+function savePayment($input){
+    $query = "insert into payments (value, `timestring`) values ($input, ". time() .")";
+    $result = execute($query);
+}
+function setMoneyCount($moneyId, $value){
+    $query = "update money set countNow = $value where id = $moneyId";
+    execute($query);
 }
 
-$server = new Server(new Config());
-
+function resetMoney(){
+    $query = "update money set countNow = countBegin";
+    execute($query);
+}

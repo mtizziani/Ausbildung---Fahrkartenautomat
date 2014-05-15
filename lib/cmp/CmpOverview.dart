@@ -23,23 +23,23 @@ class CmpOverview {
   List<Map> _backMoney = new List();
 
   List<Map> paperMoney = [
-      {"value": 50000,"image": "500eur.jpeg"},
+      /*{"value": 50000,"image": "500eur.jpeg"},
       {"value": 20000,"image": "200eur.jpeg"},
       {"value": 10000,"image": "100eur.jpeg"},
-      {"value": 5000,"image": "50eur.jpeg"},
-      {"value": 2000,"image": "20eur.jpeg"},
-      {"value": 1000,"image": "10eur.jpeg"},
-      {"value": 500,"image": "5eur.jpeg"}
+      {"value": 5000,"image": "50eur.jpeg"},*/
+      {"value": 2000,"image": "20eur.jpeg", 'count': 0},
+      {"value": 1000,"image": "10eur.jpeg", 'count': 0},
+      {"value": 500,"image": "5eur.jpeg", 'count': 0}
   ];
   List<Map> metalMoney = [
-      {"value": 200,"image": "2eur.jpeg"},
-      {"value": 100,"image": "1eur.jpeg"},
-      {"value": 50,"image": "50cent.jpeg"},
-      {"value": 20,"image": "20cent.jpeg"},
-      {"value": 10,"image": "10cent.jpeg"},
-      {"value": 5,"image": "5cent.jpeg"},
-      {"value": 2,"image": "2cent.jpeg"},
-      {"value": 1,"image": "1cent.jpeg"}
+      {"value": 200,"image": "2eur.jpeg", 'count' : 50},
+      {"value": 100,"image": "1eur.jpeg", 'count' : 100},
+      {"value": 50,"image": "50cent.jpeg", 'count' : 100},
+      {"value": 20,"image": "20cent.jpeg", 'count' : 200},
+      {"value": 10,"image": "10cent.jpeg", 'count' : 250},
+      {"value": 5,"image": "5cent.jpeg", 'count' : 200},
+      {"value": 2,"image": "2cent.jpeg", 'count' : 200},
+      {"value": 1,"image": "1cent.jpeg", 'count' : 200}
   ];
 
   /**

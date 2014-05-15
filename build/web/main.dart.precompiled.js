@@ -984,9 +984,7 @@ $isEH:true}}],["Fahrkartenautomat.web.main.generated_static_injector","file:///v
 "^":"",
 w162:{
 "^":"Li:135;",
-call$1:[function(a){var z=P.Ls(null,null,null,null)
-P.JS("Controller started")
-return new N.C9("Controller Test",null,null,z)},"call$1",null,2,0,null,165,"call"],
+call$1:[function(a){return new N.C9("Controller Test",null,null,P.Ls(null,null,null,null))},"call$1",null,2,0,null,165,"call"],
 $isEH:true},
 w163:{
 "^":"Li:135;",
