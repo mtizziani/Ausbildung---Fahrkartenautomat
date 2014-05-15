@@ -4,11 +4,14 @@
         <div class="row">
             <h4>Kasse</h4>
         </div>
+        <!-- check if the selected pricegroup is null -->
         <div class="row" ng-if="cmp.ctrl.selectedPriceGroup != null">
-            <div class="col-lg-6">Preissturfe {{cmp.ctrl.selectedPriceGroup.name}}</div>
+            <!-- ouput of the selected pricegroup -->
+            <div class="col-lg-6">Preisstufe {{cmp.ctrl.selectedPriceGroup.name}}</div>
             <div class="col-lg-2">Preis:</div>
             <div class="col-lg-4 text-right">{{cmp.ctrl.selectedPriceGroup.price|currencyFormat_DE}} EUR</div>
         </div>
+        <!-- output of the selected options -->
         <div class="row" ng-repeat="option in cmp.ctrl.selectedOptions">
             <div class="col-lg-6">+ {{option.name}}</div>
             <div class="col-lg-2">Preis:</div>
@@ -16,24 +19,29 @@
         </div>
         <hr />
         <div class="row">
+            <!-- output of the calculated complete price -->
             <div class="col-lg-6">Gesamtbetrag</div>
             <div class="col-lg-6 text-right" ng-if="cmp.ctrl.selectedPriceGroup.price">{{cmp.calculatedPrice|currencyFormat_DE}} EUR</div>
             <div class="col-lg-6 text-right" ng-if="!cmp.ctrl.selectedPriceGroup.price">{{0|currencyFormat_DE}} EUR</div>
         </div>
         <div class="row">
+            <!-- output of the calculated money the user put in -->
             <div class="col-lg-6">Geldeinwurf</div>
             <div class="col-lg-6 text-right">{{cmp.moneyInput|currencyFormat_DE}} EUR</div>
         </div>
         <div class="row">
+            <!-- how many has the user to pay to get the ticket -->
             <div class="col-lg-6">Restbetrag</div>
             <div class="col-lg-6 text-right">{{cmp.moneyOutput|currencyFormat_DE}} EUR</div>
         </div>
         <div class="row">
+            <!-- on click save the driver card, included pricegroup and choosen options, to database, give back the money and reset all -->
             <div class="col-lg-2"></div>
             <div class="col-lg-8 btn btn-default">Zahlung durchführen</div>
             <div class="col-lg-2"></div>
         </div>
         <div class="row">
+            <!-- on click reset the choosen options and pricegroup -->
             <div class="col-lg-2"></div>
             <div class="col-lg-8 btn btn-default" ng-click="cmp.cancelPayment()">Vorgang abbrechen</div>
             <div class="col-lg-2"></div>
@@ -48,21 +56,24 @@
             (klick auf eine Grafik für Einwurf)
         </div>
         <div class="row">
+            <!-- show all paper money elements -->
             <div class="col-lg-3" ng-repeat="money in cmp.paperMoney">
                 <img class=cashMoney" style="width:95%" src="sources/images/{{money.image}}" ng-click="cmp.inputMyMoney(money)"/>
             </div>
         </div>
         <div class="row" >
+            <!-- show all metal money elements -->
             <div class="col-lg-2" ng-repeat="money in cmp.metalMoney">
                 <img style="width: 95%" src="sources/images/{{money.image}}" ng-click="cmp.inputMyMoney(money)"/>
             </div>
         </div>
     </div>
+
     <div ng-if="cmp.ctrl.selectedPriceGroup != null && cmp.moneyOutput > 0">
         <div class="row" >
             <h4>Rückgabe</h4>
         </div>
-        <!-- FIXME: view of rest money doesnt work -->
+        <!-- show the money types and counts the user gets back -->
         <div class="row" ng-repeat="tmp in cmp.backMoney">
             <div class="col-lg-3">{{tmp.counter}} X</div>
             <div class="col-lg-6"><img style="width: 95%;" src="sources/images/{{tmp.image}}" /></div>

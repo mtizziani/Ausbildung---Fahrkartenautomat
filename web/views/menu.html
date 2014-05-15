@@ -1,7 +1,8 @@
 <section class="container-fluid">
     <div>
-        {{cmp.title}}
+        {{cmp.title}} <!-- otput the title of the component -->
     </div>
+    <!-- show all menu items -->
     <div class="row" ng-repeat="item in cmp.menuItems">
         <div class="btn btn-default col-lg-12"
                 ng-click="cmp.ctrl.menuChangeListener(item)">

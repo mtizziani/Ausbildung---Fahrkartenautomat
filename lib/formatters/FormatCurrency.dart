@@ -1,5 +1,8 @@
 part of myLib;
 
+/**
+ * Formatter for german currency output
+ */
 @Formatter(
   name: 'currencyFormat_DE'
 )
@@ -11,6 +14,9 @@ class FormatCurrencyDe implements Function{
   }
 }
 
+/**
+ * Formatter for american currency output
+ */
 @Formatter(
   name: 'currencyFomat_US'
 )

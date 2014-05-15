@@ -11,8 +11,11 @@ class DriverCardController {
   PriceGroup _selectedPriceGroup;
   Set<CardOption> _selectedOptions = new Set();
 
+  /**
+   * standard constructor
+   */
   DriverCardController() {
-    print("Controller started");
+    //print("Controller started");
   }
 
   get activeMenu => _activeMenu;
@@ -28,6 +31,9 @@ class DriverCardController {
     _selectedOptions.add(value);
   }
 
+  /**
+   * listen if the selected menu changes
+   */
   void menuChangeListener(String name){
     print(name);
     activeMenu = name;

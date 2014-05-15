@@ -1,5 +1,9 @@
 part of myLib;
 
+
+/**
+ * Component for the view on the right side
+ */
 @Component(
   selector: 'cmp-overview',
   publishAs: 'cmp',
@@ -38,6 +42,9 @@ class CmpOverview {
       {"value": 1,"image": "1cent.jpeg"}
   ];
 
+  /**
+   * reset all inputs, excluded the money put in from user
+   */
   void cancelPayment(){
     print('clicked Button Cancel');
     ctrl.selectedPriceGroup = null;
@@ -45,10 +52,17 @@ class CmpOverview {
     _calcOutput();
   }
 
+  /**
+   * a user puts in some money
+   */
   void inputMyMoney(Map money){
     _inputMoney.add(money);
     _calcInput();
   }
+
+  /**
+   * calculate the sum of all money have been given in
+   */
   void _calcInput(){
     int tmpMoney = 0;
     for(Map input in _inputMoney){
@@ -58,6 +72,9 @@ class CmpOverview {
     _calcOutput();
   }
 
+  /**
+   * calculate the money, the user have to get back
+   */
   void _calcOutput(){
     print('berechne rückgeld');
     int tmpMoney = 0;
@@ -69,6 +86,9 @@ class CmpOverview {
     calcOuputMoney();
   }
 
+  /**
+   * calculate the price the user have to pay
+   */
   get calculatedPrice{
     int price = 0;
     if(ctrl.selectedPriceGroup != null){
@@ -80,8 +100,14 @@ class CmpOverview {
     return price;
   }
 
+  /**
+   * get the money the user have to get back
+   */
   get backMoney => _backMoney;
 
+  /**
+   * calculate the type of money the user gets back
+   */
   int _calcThisMoneyBack(Map money, int input){
     double number = input / money['value'];
     int rest = input % money['value'];
@@ -90,6 +116,9 @@ class CmpOverview {
     return rest;
   }
 
+  /**
+   * build the map of money types the user gets back
+   */
   void calcOuputMoney(){
     if(moneyOutput > 0){
       _backMoney.clear();

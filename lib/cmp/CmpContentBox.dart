@@ -1,5 +1,9 @@
 part of myLib;
 
+/**
+ * Component for the content box.
+ * the content box is for showing several views
+ */
 @Component(
   selector: 'cmp-contentbox',
   publishAs: 'cmp',
