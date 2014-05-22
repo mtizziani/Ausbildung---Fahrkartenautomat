@@ -3,4 +3,6 @@
     <h3 class="text-center">{{cmp.title}}</h3>
     <!-- initialize the pricegroup component -->
     <cmp-pricegroups ng-if="cmp.ctrl.activeMenu == 'Tiket kaufen'" class="row"></cmp-pricegroups>
+    <!-- initialize the admin component -->
+    <cmp-admin ng-if="cmp.ctrl.activeMenu == 'Administration'" class="row" ></cmp-admin>
 </section>

@@ -1,0 +1,28 @@
+<section class="container-fluid" ng-if="cmp.loginSuccess == false">
+    <div class="row">
+        <div class="col-lg-3">Benutzername</div>
+        <input type="text" class="col-lg-3" ng-model="cmp.userName" />
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Passwort</div>
+        <input type="password" class="col-lg-3" ng-model="cmp.userPass" />
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <button class="col-lg-3" ng-click="cmp.login()">Login</button>
+    </div>
+</section>
+<section class="container-fluid" ng-if="cmp.loginSuccess == true">
+    <div class="row">
+        <div class="col-lg-12">
+            Jetzt kann gearbeitet werden...
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">Auflistung</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">Reset</div>
+    </div>
+</section>

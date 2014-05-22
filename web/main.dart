@@ -20,6 +20,7 @@ part "../lib/cmp/CmpPriceGroups.dart";
 part "../lib/objects/PriceGroup.dart";
 part "../lib/objects/CardOption.dart";
 part "../lib/formatters/FormatCurrency.dart";
+part "../lib/cmp/CmpAdmin.dart";
 
 
 /**
@@ -32,6 +33,7 @@ class AppModule extends Module{
     type(CmpOverview);
     type(CmpContentBox);
     type(CmpPriceGroups);
+    type(CmpAdmin);
     type(FormatCurrencyDe);
     type(FormatCurrencyUs);
   }
